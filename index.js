@@ -117,7 +117,7 @@ function addTeamMemberEmployee() {
 					generateHtmlFile();
 					break;
 			}
-		})
+		});
 };
 
 // ENGINEER PROFILE FUNCTION
