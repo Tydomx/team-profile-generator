@@ -16,7 +16,7 @@ const groupTeamArray = [];
 // function that outputs HTML file
 function writeFile(htmlFileArr) {
 	return new Promise((resolve, reject) => {
-		fs.writeFile(`./dist/teamProfile.html`, htmlFileArr.join(''), function (err) {
+		fs.writeFile(`./dist/${groupTeamArray[0]}.html`, htmlFileArr.join(''), function (err) {
 			// if error, reject promise and send err to .catch() method
 			if (err) {
 				reject(err);
@@ -145,7 +145,7 @@ function addTeamMemberEmployee() {
 					addInternPrompts();
 					break;
 				case 'Finish generating profiles':
-					console.log('Creating the HTML file');
+					console.log('Creating the HTML file...');
 					generateHtmlFile();
 					break;
 			}

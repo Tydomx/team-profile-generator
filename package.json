@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Tydomx/team-profile-generatorv2#readme",
   "dependencies": {
+    "bootstrap-icons": "^1.9.1",
     "inquirer": "^8.2.4",
     "jest": "^28.1.3"
   }
