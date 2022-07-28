@@ -79,7 +79,7 @@ function addManagerPrompts() {
 		})
 };
 
-// creating the options after manager is selected between engineer, intern and no more members
+// creating the option list after manager is selected between engineer, intern and no more members
 function addTeamMemberEmployee() {
 	inquirer.prompt([
 		{
@@ -91,6 +91,7 @@ function addTeamMemberEmployee() {
 				'Add an Intern',
 				'Finish generating profiles'
 			],
+			// making sure that all of the options can be selected
 			validate: teamMemberOptionsInput => {
 				if (teamMemberOptionsInput === 'Add an Engineer' || teamMemberOptionsInput === 'Add an Intern') {
 					return true;
@@ -105,7 +106,10 @@ function addTeamMemberEmployee() {
 			}
 		}
 	])
+		// this function has the information from the previouis prompts in manager
 		.then(function (teamOptionData) {
+			// switch case so taht when user selects on these options they can get sent to the appropriate function
+			// Creation of Engineer, Intern, or Finish the profiles and make the HTML file
 			switch (teamOptionData.teamMemberOptions) {
 				case 'Add an Engineer':
 					addEngineerPrompts();
@@ -176,6 +180,7 @@ function addEngineerPrompts() {
 			}
 		}
 	])
+		// grabbing engineerData from before and then compiling into the teamMember const, so they it can be added to the array
 		.then(function (engineerData) {
 			const engineerName = engineerData.engineerName;
 			const engineerId = engineerData.engineerId;
@@ -185,11 +190,12 @@ function addEngineerPrompts() {
 
 			groupTeamArray.push(teamMember);
 
+			// calls this so that if user needs to add another intern/engineer they can do so through the list they get
 			addTeamMemberEmployee();
 		})
 };
 
-// function taht initializes the app
+// function taht initializes the app and asks for a team name
 function init() {
 	inquirer.prompt([
 		{
