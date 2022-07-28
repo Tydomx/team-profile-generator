@@ -1,5 +1,5 @@
 // LINKING THIS FILE TO THE ENGINEER MODELFILE
-const Engineer = require('');
+const Engineer = require('../lib/Engineer');
 
 test("SET ENGINEER's OBJECT WITH GITHUB USERNAME", () => {
 	const getUserGitHub = 'tydom';
