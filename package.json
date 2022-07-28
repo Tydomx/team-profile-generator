@@ -1,7 +1,7 @@
 {
   "name": "team-profile-generatorv2",
   "version": "1.0.0",
-  "description": "",
+  "description": "App that generates a webpage displaying my team's basic info for quick access to their emails and GitHub profiles",
   "main": "index.js",
   "scripts": {
     "test": "jest",
