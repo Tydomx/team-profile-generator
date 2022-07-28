@@ -195,6 +195,77 @@ function addEngineerPrompts() {
 		})
 };
 
+// function for INTERN SECTION 
+function addInternPrompts() {
+	inquirer.prompt([
+		{
+			type: 'input',
+			name: 'internName',
+			message: 'What is the intern\'s name?',
+			validate: internNameInput => {
+				if (internNameInput) {
+					return true;
+				} else {
+					console.log('Pleae enter a name for the intern');
+					return false;
+				}
+			}
+		},
+		{
+			type: 'input',
+			name: 'internId',
+			message: "what is the intern's ID number?",
+			validate: internIdNumberInput => {
+				if (internIdNumberInput) {
+					return true;
+				} else {
+					console.log('Please enter an ID number');
+					return false;
+				}
+			}
+		},
+		{
+			type: 'input',
+			name: 'internEmail',
+			message: "What is the intenr's email address?",
+			validate: internEmailAddressInput => {
+				if (internEmailAddressInput) {
+					return true;
+				} else {
+					console.log('Plese enter an email address');
+					return false;
+				}
+			}
+		},
+		{
+			type: 'input',
+			name: 'internSchool',
+			message: "What is the intern's school?",
+			validate: internSchoolInput => {
+				if (internSchoolInput) {
+					return true;
+				} else {
+					console.log('PLease etner a school naem');
+					return false;
+				}
+			}
+		}
+	])
+		// grabbing intern data from before and then compiling into the teamMember const, so then it can be added to the array
+		.then(function (internData) {
+			const internName = internData.internName;
+			const internId = internData.internId;
+			const internEmail = internData.internEmail;
+			const internSchool = internData.internSchool;
+			const teamMember = new Intern(internName, internId, internEmail, internSchool);
+
+			groupTeamArray.push(teamMember);
+
+			// calls this so that if user needs to add another intern/engineer they can do so through the list they get
+			addTeamMemberEmployee();
+		})
+};
+
 // function taht initializes the app and asks for a team name
 function init() {
 	inquirer.prompt([
