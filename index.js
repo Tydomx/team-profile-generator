@@ -13,6 +13,9 @@ const htmlTemplate = require('./src/html-template');
 // holds all the team members into this array
 const groupTeamArray = [];
 
+// ***************************************************** //
+// ***************************************************** //
+
 // function that outputs HTML file
 function writeFile(htmlFileArr) {
 	return new Promise((resolve, reject) => {
