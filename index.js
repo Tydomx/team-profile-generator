@@ -74,7 +74,7 @@ function addManagerPrompts() {
 			const teamMember = new Manager(managerName, managerId, managerEmail, managerNumber);
 
 			groupTeamArray.push(teamMember);
-
+			console.log(groupTeamArray);
 			addTeamMemberEmployee();
 		})
 };
@@ -106,7 +106,7 @@ function addTeamMemberEmployee() {
 		}
 	])
 		.then(function (teamOptionData) {
-			switch (teamOptionData.teamMemberOptionsInput) {
+			switch (teamOptionData.teamMemberOptions) {
 				case 'Add an Engineer':
 					addEngineerPrompts();
 					break;
@@ -117,6 +117,75 @@ function addTeamMemberEmployee() {
 					generateHtmlFile();
 					break;
 			}
+		})
+};
+
+// ENGINEER PROFILE FUNCTION
+function addEngineerPrompts() {
+	inquirer.prompt([
+		{
+			type: 'input',
+			name: 'engineerName',
+			message: 'What is the engineer\'s name?',
+			validate: engineerNameInput => {
+				if (engineerNameInput) {
+					return true;
+				} else {
+					console.log('Please enter a name for the engineer');
+					return false;
+				}
+			}
+		},
+		{
+			type: 'input',
+			name: 'engineerId',
+			message: 'What is the engineer\'s ID nubmer?',
+			validate: engineerIdInput => {
+				if (engineerIdInput) {
+					return true;
+				} else {
+					console.log('Pleaes enter an ID number for the engineer');
+					return false;
+				}
+			}
+		},
+		{
+			type: 'input',
+			name: 'engineerEmail',
+			message: 'What is the engineer\'s email addres?',
+			valdiate: engineerEmailInput => {
+				if (engineerEmailInput) {
+					return true;
+				} else {
+					console.log('Pleaes enter an email address');
+					return false;
+				}
+			}
+		},
+		{
+			type: 'input',
+			name: 'engineerGitHub',
+			message: 'What is the engineer\'s gitHub username?',
+			validate: engineerGitHubUsernameInput => {
+				if (engineerGitHubUsernameInput) {
+					return true;
+				} else {
+					console.log('Pleaes enter a gitHub username');
+					return false;
+				}
+			}
+		}
+	])
+		.then(function (engineerData) {
+			const engineerName = engineerData.engineerName;
+			const engineerId = engineerData.engineerId;
+			const engineerEmail = engineerData.engineerEmail;
+			const engineerGitHubUsername = engineerData.engineerGitHub;
+			const teamMember = new Engineer(engineerName, engineerId, engineerEmail, engineerGitHubUsername);
+
+			groupTeamArray.push(teamMember);
+
+			addTeamMemberEmployee();
 		})
 };
 
