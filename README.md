@@ -59,8 +59,8 @@ The purpose of this application is to help development teams to quickly generate
 
 
 ## Screenshot(s) 📷
-![image]()
-![image]()
+![image](https://user-images.githubusercontent.com/99767019/181628641-d1fa848a-c2de-4666-95d3-63c296712b14.png)
+![image](https://user-images.githubusercontent.com/99767019/181628750-c66b8d4d-437e-43b2-aeb0-a60905333bcb.png)
 
 
 ## Author
