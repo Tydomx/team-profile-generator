@@ -7,8 +7,35 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
+// linking HTML template file
+const htmlTemplate = require('./src/html-template');
+
 // holds all the team members into this array
 const groupTeamArray = [];
+
+// function that outputs HTML file
+function writeFile(htmlFileArr) {
+	return new Promise((resolve, reject) => {
+		fs.writeFile(`./dist/teamProfile.html`, htmlFileArr.join(''), function (err) {
+			// if error, reject promise and send err to .catch() method
+			if (err) {
+				reject(err);
+				return;
+			};
+
+			resolve({
+				ok: true,
+				messeage: 'File created, the HTML file is located in the "dist" folder.'
+			})
+		})
+	})
+};
+
+// generate HTML file
+function generateHtmlFile() {
+	const htmlFileArr = htmlTemplate.generateHtml(groupTeamArray);
+	writeFile(htmlFileArr);
+};
 
 // adding the manager inquirer prompts
 function addManagerPrompts() {
@@ -118,6 +145,7 @@ function addTeamMemberEmployee() {
 					addInternPrompts();
 					break;
 				case 'Finish generating profiles':
+					console.log('Creating the HTML file');
 					generateHtmlFile();
 					break;
 			}
