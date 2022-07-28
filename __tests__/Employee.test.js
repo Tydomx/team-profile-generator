@@ -1,11 +1,11 @@
-const Employee = require();
+const Employee = require('../lib/Employee');
 
 test('Create an employee object', () => {
 	const employee = new Employee('Michael', 123, 'michael@gmail.com');
 
-	expect(employee.name).toBe(expect.any(String));
-	expect(employee.id).toBe(expect.any(Number));
-	expect(employee.email).toBe(expect.any(String));
+	expect(employee.name).toEqual(expect.any(String));
+	expect(employee.id).toEqual(expect.any(Number));
+	expect(employee.email).toEqual(expect.any(String));
 });
 
 test('Check to see if can get name with getName()', () => {
@@ -31,7 +31,7 @@ test('Chekc to see if can get email with getEmail()', () => {
 
 test('Use getRole() to return "Employee" as the role.', () => {
 	const role = 'Employee';
-	const employee = new Employee('Michael', 123, 'mcihael@gmail.com');
+	const employee = new Employee('Michael', 123, 'mcihael@gmail.com', role);
 
 	expect(employee.getRole()).toBe(role);
 });
