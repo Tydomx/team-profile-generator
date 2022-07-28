@@ -7,10 +7,11 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
+// holds all the team members into this array
 const groupTeamArray = [];
 
 // adding the manager inquirer prompts
-const addManagerPrompts = () => {
+function addManagerPrompts() {
 	inquirer.prompt([
 		{
 			type: 'input',
@@ -75,6 +76,47 @@ const addManagerPrompts = () => {
 			groupTeamArray.push(teamMember);
 
 			addTeamMemberEmployee();
+		})
+};
+
+// creating the options after manager is selected between engineer, intern and no more members
+function addTeamMemberEmployee() {
+	inquirer.prompt([
+		{
+			type: 'list',
+			name: 'teamMemberOptions',
+			message: 'What would you like to do next?',
+			choices: [
+				'Add an Engineer',
+				'Add an Intern',
+				'Finish generating profiles'
+			],
+			validate: teamMemberOptionsInput => {
+				if (teamMemberOptionsInput === 'Add an Engineer' || teamMemberOptionsInput === 'Add an Intern') {
+					return true;
+				}
+				else if (teamMemberOptionsInput === 'Finish generating profiles') {
+					return true;
+				}
+				else {
+					console.log('Please choose one of the options');
+					return false;
+				}
+			}
+		}
+	])
+		.then(function (teamOptionData) {
+			switch (teamOptionData.teamMemberOptionsInput) {
+				case 'Add an Engineer':
+					addEngineerPrompts();
+					break;
+				case 'Add an Intern':
+					addInternPrompts();
+					break;
+				case 'Finish generating profiles':
+					generateHtmlFile();
+					break;
+			}
 		})
 };
 
