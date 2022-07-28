@@ -1,5 +1,5 @@
 // LINKING THIS FILE TO THE INTERN FILE IN DIST FOLDER
-const intern = require('');
+const intern = require('../lib/Intern');
 
 test('SET INTERN OBJECT WITH INTERN SCHOOL', () => {
 	const internSchool = 'UT Austin';
